@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme Uygulaması</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #fc00ff, #00dbde);
+            margin: 0;
+            padding: 20px; /* Sağ, sol, üst ve alttan boşluk */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .app-container {
+            width: 375px;
+            background-color: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        .header {
+            padding: 20px;
+            background: linear-gradient(45deg, #7f00ff, #e100ff);
+            color: white;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            text-align: center;
+        }
+
+        .header h2 {
+            margin: 0;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            opacity: 0.8;
+        }
+
+        .card-section {
+            background: linear-gradient(45deg, #00dbde, #fc00ff);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card-section .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .card-section .card-header .chip {
+            width: 40px;
+        }
+
+        .card-section .card-header .visa-logo {
+            width: 60px;
+        }
+
+        .card-section .card-number {
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .card-section .card-holder-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .card-section .card-holder-info .card-holder {
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            padding: 20px;
+            position: relative;
+        }
+
+        .chart-container canvas {
+            width: 100%;
+            height: 150px;
+        }
+
+        .activity-section {
+            padding: 20px;
+            flex-grow: 1;
+            background-color: #f7f7f7;
+        }
+
+        .activity-section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .activity-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .activity-item .activity-icon {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .activity-item .activity-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .activity-item .activity-info {
+            flex-grow: 1;
+        }
+
+        .activity-item .activity-info div:first-child {
+            font-weight: 600;
+        }
+
+        .activity-item .activity-info div:last-child {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .activity-item .activity-amount {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .activity-item .activity-amount.negative {
+            color: #e74c3c;
+        }
+
+        .footer {
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .footer-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .footer-icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-icon.active {
+            background: linear-gradient(45deg, #fc00ff, #00dbde);
+            border-radius: 50%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h2>Ödeme Uygulaması</h2>
+           
+        </div>
+
+        <!-- Card Section -->
+        <div class="card-section">
+            <div class="card-header">
+                <img class="chip" src="https://img.icons8.com/ios-filled/50/ffffff/sim-card-chip.png" alt="Chip">
+                <img class="visa-logo" src="https://img.icons8.com/color/48/ffffff/visa.png" alt="Visa Logo">
+            </div>
+            <div class="card-number">**** **** **** 1234</div>
+            <div class="card-holder-info">
+                <div class="card-holder">Adil Oğuz</div>
+                <div class="expiry-date">12/24</div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <!-- Activity Section -->
+        <div class="activity-section">
+            <h3>Son Hareketler</h3>
+            <div class="activity-item">
+                <div class="activity-icon">
+                    <img src="https://img.icons8.com/fluency/48/000000/bank-euro.png" alt="Havale">
+                </div>
+                <div class="activity-info">
+                    <div>Havale</div>
+                    <div>01/11/2019</div>
+                </div>
+                <div class="activity-amount">$275.00</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">
+                    <img src="https://img.icons8.com/color/48/000000/gas-station.png" alt="Benzin">
+                </div>
+                <div class="activity-info">
+                    <div>Benzin</div>
+                    <div>01/11/2019</div>
+                </div>
+                <div class="activity-amount negative">-$9.49</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">
+                    <img src="https://img.icons8.com/color/48/000000/restaurant.png" alt="Yemek">
+                </div>
+                <div class="activity-info">
+                    <div>Yemek</div>
+                    <div>31/10/2019</div>
+                </div>
+                <div class="activity-amount negative">-$45.00</div>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="footer">
+            <div class="footer-icon active">
+                <img src="https://img.icons8.com/material-outlined/24/000000/home.png" alt="Ana Sayfa">
+            </div>
+            <div class="footer-icon">
+                <img src="https://img.icons8.com/material-outlined/24/000000/money-bag.png" alt="Cüzdan">
+            </div>
+            <div class="footer-icon">
+                <img src="https://img.icons8.com/material-outlined/24/000000/money-transfer.png" alt="Ödemeler">
+            </div>
+            <div class="footer-icon">
+                <img src="https://img.icons8.com/material-outlined/24/000000/user.png" alt="Profil">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart.js ile basit bir çizgi grafiği oluşturma
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        const activityChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1 Kasım', '2 Kasım', '3 Kasım', '4 Kasım', '5 Kasım', '6 Kasım', '7 Kasım'],
+                datasets: [{
+                    label: 'Harcamalar',
+                    data: [50, 75, 25, 100, 50, 75, 45],
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // Grafikteki legend'i kapatır
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
